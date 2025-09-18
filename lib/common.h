@@ -21,7 +21,7 @@
 
 
 // Función para mostrar un mensaje de errno y hacer un exit para finalizar el programa
-print_exit(char*, int);
+void print_exit(char *errMsg, int extVal);
 
 
 #endif

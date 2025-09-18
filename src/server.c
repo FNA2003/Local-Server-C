@@ -42,7 +42,7 @@ int main(void) {
 	printf("Servidor esperando conexiones\n\tBacklog:%d\n\tPuerto:%d\n", MAX_BACKLOG, SERV_PORT);
 
 	while (flag) {
-		client_fd = accept(server_fd, (struct sockaddr*)&direccionSocket, tamanioAddr);
+		client_fd = accept(server_fd, (struct sockaddr*)&direccionSocket, &tamanioAddr);
 		if (client_fd < 0) print_exit("Error al aceptar una conexión", 4);
 
 		printf("Conexión aceptada!\n");
