@@ -10,7 +10,6 @@
  * del cliente, y, se retorna una confirmación (mostrando antes el mensaje del cliente)
  * esto es, escencialmente, para probar rapidamente el uso de sockets.
  */
-
 int main(void) {
 	int server_fd, client_fd;			// File Descriptor de los sockets cliente-servidor
 	int flag = 1;						// Flag del bucle "demonio" infinito, permite cerrarlo
