@@ -26,7 +26,7 @@ int main(void) {
 
 	/* Configuración del socket del servidor */
 	direccionSocket.sin_family = AF_INET;
-	direccionSocket.sin_port = htons(8000);		  // Puerto 8000 por ejemplo
+	direccionSocket.sin_port = htons(SERV_PORT);  // Puerto de ejemplo
 	direccionSocket.sin_addr.s_addr = INADDR_ANY; // Escuchar en cualquier IP local
 
 	tamanioAddr = sizeof(direccionSocket);
@@ -36,10 +36,10 @@ int main(void) {
 	if (ret < 0) print_exit("Server socket binding error", 2);
 
 	// Asumimos que el servidor escuchará unicamente a nuestro cliente de ejemplo
-	ret = listen(server_fd, 2);
+	ret = listen(server_fd, MAX_BACKLOG);
 	if (ret < 0) print_exit("Error al poner en 'pasivo' al servidor", 3); 
 
-	printf("Servidor esperando conexiones\n\tBacklog:2\n\tPuerto:8000\n");
+	printf("Servidor esperando conexiones\n\tBacklog:%d\n\tPuerto:%d\n", MAX_BACKLOG, SERV_PORT);
 
 	while (flag) {
 		client_fd = accept(server_fd, (struct sockaddr*)&direccionSocket, tamanioAddr);
