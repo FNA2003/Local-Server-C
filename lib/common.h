@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <sys/wait.h>
 
 /* Librerías necesarias para trabajo en sockets */
 #include <sys/socket.h> // Las funciones de sockets
@@ -20,8 +21,17 @@
 #define MAX_BACKLOG 1
 
 
-// Función para mostrar un mensaje de errno y hacer un exit para finalizar el programa
+struct datosCliente {
+    struct sockaddr_in *socketAddr;
+    int socketFD;
+};
+
+
+
 void print_exit(char *errMsg, int extVal);
 
+char **parse_command(const char *input);
+
+void free_args(char **args);
 
 #endif
