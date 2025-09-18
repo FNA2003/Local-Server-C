@@ -16,8 +16,8 @@
 // Tamaño de los mensajes de los sockets
 #define BUFF_SIZE 255
 
-#define SERV_PORT 8000
-#define MAX_BACKLOG 2
+#define SERV_PORT 3377
+#define MAX_BACKLOG 1
 
 
 // Función para mostrar un mensaje de errno y hacer un exit para finalizar el programa
