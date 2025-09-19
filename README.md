@@ -48,7 +48,9 @@ Para terminar pulse 'Ctrl+C'
 
 - Significando que el servidor se encuentra activo y a la espera de nuevas conexiones. Ahora, para hacer peticiones, le recomendamos usar el siguiente comando en otra terminal:
 
-> telnet localhost -4 [PUERTO]
+```
+telnet localhost -4 [PUERTO]
+```
 
 - Este, abrirá una interfaz de usuario (por defecto instalada en la mayoría de sistemas linux) que se conectará a su servidor en ejecución, dando un mensaje similar a:
 
