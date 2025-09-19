@@ -12,16 +12,22 @@
 
 ## Uso
 - Una vez tenga este repositorio, verifique si ud. tiene el comando ```cmake``` y, si es así, que su versión sea al menos la referida en ```CMakeLists.txt```. Para verficar su versión puede ejecutar en consola:
-> cmake --version
+```
+cmake --version
+```
 - Para poder compilar, unicamente ejecute los siguientes comandos en orden (posicione su shell en su directorio local de este repositorio):
-> mkdir build
-
-> cd build
-
-> cmake ../
-
-> make
-
+```
+mkdir build
+```
+```
+cd build
+```
+```
+cmake ../
+```
+```
+make
+```
 - Luego, debería ver dentro de su carpeta 'build' los siguientes archivos:
 ```
 -rw-r--r-- 1 franco franco ? 12445 sep 18 20:54 CMakeCache.txt
