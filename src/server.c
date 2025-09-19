@@ -64,7 +64,7 @@ static int init_socket_server() {
 	sock_addr.sin_family = AF_INET;
 	sock_addr.sin_port = htons(SERV_PORT);  // Variable global, vea common.h
 	sock_addr.sin_addr.s_addr = INADDR_ANY; // Escuchar en cualquier IP local
-
+	
 	/* Le asignamos al file descriptor la información configurada anteriormente, o retornamos por error */
 	if (bind(sock_fd, (struct sockaddr*)&sock_addr, sizeof(sock_addr)) < 0) {
 		close(sock_fd);
@@ -75,7 +75,7 @@ static int init_socket_server() {
 		close(sock_fd);
 		print_exit("Error en listen()", EXIT_FAILURE);
 	}
-
+	
 	/* Si todo sale bien, retornamos el número del fd asignado al socket del servidor */
 	return sock_fd;
 }
@@ -88,10 +88,10 @@ static void main_loop() {
 			perror("malloc client_addr");
 			continue;
 		}
-
+		
 		socklen_t addr_len = sizeof(struct sockaddr_in);
 		int cliente_sock = accept(server_sock, (struct sockaddr*)client_addr,&addr_len); // Esperamos a recibir un cliente. Nota: accept() es bloqueante hasta recibir una solicitud o cierre del servidor
-
+		
 		/* Hubo un error en accept */
 		if (cliente_sock < 0) {
 			free(client_addr);
@@ -101,7 +101,7 @@ static void main_loop() {
 			perror("Error en accept()");
 			break;
 		}
-
+		
 		struct datos_cliente *data = malloc(sizeof(struct datos_cliente));
 		if (!data) {
 			// La petición se perderá
@@ -110,7 +110,7 @@ static void main_loop() {
 			free(client_addr);
 			continue;
 		}
-
+		
 		data->socket_addr = client_addr;
 		data->socket_fd = cliente_sock;
 
@@ -124,6 +124,7 @@ static void main_loop() {
 			continue;
 		}
 		pthread_detach(hilo);
+
 	}
 }
 
@@ -167,9 +168,11 @@ static void* hilo_cliente(void *args) {
 			close(p[1]);               // Una vez redirigida la salida al pipe, podemos cerrar su referencia
 			// Ejecución desde el hijo
 			execvp(argumentos[0], argumentos);
+
 			// Si se sigue ejecutando, hubo un error al cambiar la imágen
 			perror("execvp");
-			exit(EXIT_FAILURE);
+			free_args(argumentos); // Como UNIX funciona con COW (Copy On Write), solamente liberamos la memoria del HEAP usada por el hijo (copiada)
+			pthread_exit(NULL);
 		} else if (pid > 0){  // Padre
 			close(p[1]);
 
