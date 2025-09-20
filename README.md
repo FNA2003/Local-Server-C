@@ -69,7 +69,7 @@ Escape character is '^]'.
 
 ### Seguridad
  Ahora, en estas últimas secciones vamos a hablar de temas totalmente serios y, posiblemente, necesarios al implementar este programa.
- Vamos por el mas importante a la hora de dar este servicio a internet: La __seguridad__. Cabe decir que, la misma premisa del programa es "peligrosa", es decir, podríamos ejecutar casi cualquier comando linux en nuestra PC remotamente solamente con ejecutar el programa (los comandos ```sudo``` solamente serán accesibles si se ejecuta el archivo como ```sudo ./local_server``` o, si se provee la contraseña cada vez que se envié un comando de este tipo) asi que <u>__se recomienda no usar este programa para conexiones con internet__</u> (a menos de que lo modifique con otro intermediario). De igual modo, en la solicitud de un puerto, deberíamos aclararle a linux como manejar el firewall en este puerto (por obvias razones no voy a detallar como evitarlas).
+ Vamos por el mas importante a la hora de dar este servicio a internet: La __seguridad__. Cabe decir que, la misma premisa del programa es "peligrosa", es decir, podríamos ejecutar casi cualquier comando linux en nuestra PC remotamente solamente con ejecutar el programa (los comandos ```sudo``` solamente serán accesibles si se ejecuta el archivo como ```sudo ./local_server``` o, si se provee la contraseña cada vez que se envié un comando de este tipo) asi que <u>__se recomienda no usar este programa para conexiones con internet__</u> (a menos de que lo modifique con otro intermediario).
   Siguiendo el tema de seguridad, notará que no podrá acceder desde su navegador (u otro) al servidor y esto es debido a que toda la comunicación con el servidor es "plana", es decir, no se adopta ningún protocolo HTTP.
 
 ### Memoria
