@@ -79,7 +79,7 @@ Escape character is '^]'.
 ---
 
 > **Advertencia:**
-> Cuando desde el cliente se ejecutan comandos como "Ctrl+C" u otros, hace que el servidor no se comperte como es debido. Hasta el momento, no se halló una posible solución a este incoveniente.
+> Cuando desde el cliente se ejecutan comandos como "Ctrl+C" u otros, hace que el servidor no se comporte como es debido. Hasta el momento, no se halló una posible solución a este incoveniente.
 
 ---
 
